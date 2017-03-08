@@ -11,8 +11,7 @@ from flask import Flask
 
 app = Flask(__name__)
 
-@app.route("/")
-def
+
 
 predict = pandas.read_csv("trafficData.csv")
 # Print the names of the columns in games.
@@ -73,5 +72,12 @@ print(predictions) # predicting traffic status 5,1,6,18,9
 percentError = mean_squared_error(predictions, test[target]) * 100
 
 print(percentError)
+
+@app.route("/")
+def hello():
+    return "testing"
+
+if __name__ == "__main__":
+    app.run()
 
 
