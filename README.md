@@ -1,6 +1,6 @@
 # MapPrediction
 ## Map prediction - predicting Maps
 
-#Machine Learning Algorithm
+##Machine Learning Algorithm
 
 We used a linear regression model
