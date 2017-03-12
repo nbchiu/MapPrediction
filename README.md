@@ -3,4 +3,4 @@
 
 ###Machine Learning Algorithm
 
-We used a linear regression model
+We used a C-Support Vector Classification model to predict future traffic status
