@@ -1,5 +1,5 @@
 # Import the pandas library.
-import pandas
+#import pandas
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
 from sklearn.linear_model import LinearRegression
@@ -83,7 +83,7 @@ plot_columns = pca_2.fit_transform(good_columns)
 # Make a scatter plot of each game, shaded according to cluster assignment.
 plt.scatter(x=plot_columns[:,0], y=plot_columns[:,1], c=labels)
 # Show the plot.
-plt.show();'''
+plt.show();
 
 
 # Read the CSV file with pandas. Use predict.[column name] to get column values.
@@ -118,4 +118,4 @@ print(predictions) # predicting traffic status 5,1,6,18,9
 
 # Compute error between our test predictions and the actual values.
 # percentError = mean_squared_error(predictions, test[target]) * 100
-# print(percentError)
+# print(percentError)'''
