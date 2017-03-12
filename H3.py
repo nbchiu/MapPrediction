@@ -1,6 +1,6 @@
 # Import the pandas library.
 #import pandas
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
 from sklearn.linear_model import LinearRegression
 from sklearn.decomposition import PCA
