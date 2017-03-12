@@ -9,7 +9,57 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_squared_error
 from flask import Flask
 
-# app = Flask(__name__)
+app = Flask(__name__)
+traffic_Data = []
+outputs = []
+
+@app.route("/")
+def index():
+    return app.send_static_file('index.html')
+
+#trains for prediction
+@app.route('/train', methods=['POST'])
+def train():
+    road_ID = request.form['road_ID']
+    direction = request.form['direction']
+    dayOfWeek = request.form['dayOfWeek']
+    timeOfDay = request.form['timeOfDay']
+    traffic_Status = request.form['traffic_Status']
+    datapoints.append([str(road_ID), str(direction), str(dayOfWeek), str(timeOfDay)])
+    outputs.append(int(traffic_Status))
+
+    print "TRAFFIC DATA: "
+    print traffic_Data
+    print "OUTPUTS: "
+    print outputs
+
+    return app.send_static_file('index.html')
+
+#make a prediction
+@app.route('/predict', methods=['POST'])
+def predict():
+    if(len(traffic_Data) < 2):
+        return("ERROR: NEED AT LEAST TWO DATA", 400)
+    model = SVC(gamma = 0.001, C=100.)
+    model.fit(traffic_Data, outputs)
+    road_ID = request.form['road_ID']
+    direction = request.form['direction']
+    dayOfWeek = request.form['dayOfWeek']
+    timeOfDay = request.form['timeOfDay']
+    prediction = model.predict([[str(road_ID), str(direction), str(dayOfWeek), str(timeOfDay)]])
+
+    print "TRAFFIC DATA: "
+    print traffic_Data
+    print "OUTPUTS: "
+    print outputs
+    print "PREDICTION: "
+    print prediction
+
+    return("PREDICTION: " + str(prediction), 200)
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)
+
 
 '''# Make a histogram of all the ratings in the average_rating column.
 plt.hist(predict["traffic_status"])
@@ -69,13 +119,3 @@ print(predictions) # predicting traffic status 5,1,6,18,9
 # Compute error between our test predictions and the actual values.
 # percentError = mean_squared_error(predictions, test[target]) * 100
 # print(percentError)
-
-#
-#
-# @app.route("/")
-# def hello():
-#     return "testing"
-#
-# if __name__ == "__main__":
-#     app.run()
-

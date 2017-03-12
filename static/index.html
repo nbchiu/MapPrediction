@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Traffic Prediction</title>
+</head>
+<body>
+<form action="http://ec2-52-53-196-31.us-west-1.compute.amazonaws.com:5000/train" method="Post">
+    Road ID:<br>
+    <input type="text" name="road_ID"><br>
+    Direction:<br>
+    <input type="text" name="direction"><br>
+    Day of Week:<br>
+    <input type="text" name="dayOfWeek"><br>
+    Time of Day:<br>
+    <input type="text" name="timeOfDay"><br>
+    Traffic Status:<br>
+    <input type="text" name="trafficStatus"><br>
+    <input type="submit" value="training_Info">
+</form>
+<form action="http://ec2-52-53-196-31.us-west-1.compute.amazonaws.com:5000/predict" method="Post">
+    Road ID:<br>
+    <input type="text" name="road_ID"><br>
+    Direction:<br>
+    <input type="text" name="direction"><br>
+    Day of Week:<br>
+    <input type="text" name="dayOfWeek"><br>
+    Time of Day:<br>
+    <input type="text" name="timeOfDay"><br>
+    <input type="submit" value="prediction_Info">
+</form>
+</body>
+</html>
